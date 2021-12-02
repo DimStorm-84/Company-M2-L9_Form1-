@@ -1,25 +1,30 @@
 import React, { useState } from "react";
+import TextField from "../components/textField";
 
 const Login = () => {
-    const [email] = useState("");
-    const handleChange = (e) => {
-        console.log(e);
+    const [data, setData] = useState({ email: "", password: "" });
+
+    const handleChange = ({ target }) => {
+        setData((prevState) => ({
+            ...prevState,
+            [target.name]: target.value
+        }));
     };
     return (
         <form action="">
-            <div>
-                <label htmlFor="email"> Email </label>
-                <input
-                    type="text"
-                    id="email"
-                    value={email}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="password"> Пороль </label>
-                <input type="password" id="password" />
-            </div>
+            <TextField
+                label="Электронная почта"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+            />
+            <TextField
+                label="Пароль"
+                type="password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+            />
         </form>
     );
 };
