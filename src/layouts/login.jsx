@@ -3,6 +3,7 @@ import TextField from "../components/textField";
 
 const Login = () => {
     const [data, setData] = useState({ email: "", password: "" });
+    const [setErrors] = useState();
 
     const handleChange = ({ target }) => {
         setData((prevState) => ({
@@ -10,8 +11,25 @@ const Login = () => {
             [target.name]: target.value
         }));
     };
-    return (
-        <form action="">
+    useEffect(() => {
+        validate();
+    }, [data]);
+    const validate = () => {
+        const errors = {}
+        for (const fieldName in data)
+        if(data[fieldName].trim()==="") {
+            errors[fieldName]=`${fieldName} обязательно для заполнения`
+        }
+       }
+       setErrors(errors);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+    };
+return (
+        <form onSubmit={handleSubmit}>
             <TextField
                 label="Электронная почта"
                 name="email"
@@ -25,6 +43,7 @@ const Login = () => {
                 value={data.password}
                 onChange={handleChange}
             />
+            <button type="submit">Submit</button>
         </form>
     );
 };
