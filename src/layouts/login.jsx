@@ -14,18 +14,18 @@ const Login = () => {
     const validatorConfog = {
         email: {
             isRequired: {
-                massage: "Электронная почта обязательно для заполнения"
+                message: "Электронная почта обязательно для заполнения"
             },
             isEmail: {
-                massage: "Email введен некорректно"
+                message: "Email введен некорректно"
             }
         },
         password: {
             isRequired: {
-                massage: "Пароль обязательно для заполнения"
-            }
-            isCapital:{
-                massage:"Пароль должен содержать хотя бы одну букву"
+                message: "Пароль обязательно для заполнения"
+            },
+            isCapital: {
+                message: "Пароль должен содержать хотя бы одну букву"
             }
         }
     };
