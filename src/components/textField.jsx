@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const TextField = ({ label, type, name, value, onChange, error }) => {
     return (
-        <div>
+        <div className="mb-4">
             <label htmlFor={name}> {label} </label>
             <input
                 type={type}
@@ -11,8 +11,13 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
                 name={name}
                 value={value}
                 onChange={onChange}
+                className="form-control is-invalid"
             />
-            {error && <p>{error}</p>}
+            {error && (
+                <div div className="invalid-feedback">
+                    {error}
+                </div>
+            )}
         </div>
     );
 };
